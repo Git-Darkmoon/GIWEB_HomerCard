@@ -1,37 +1,41 @@
-import Link from "next/link";
+import Image from "next/image";
+import IdText from "~/components/IdText";
+import type { character } from "~/types/Character";
+
+const characterInfo: character = {
+  name: "Homer Simpson",
+  nationality: "Mexicana",
+  dateOfIssue: "20 March",
+  Authority: "Mexico",
+};
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
+    <main className="grid min-h-screen w-full place-items-center bg-gradient-to-br from-indigo-300 to-red-100">
+      <article className="rounded-md bg-white/40 px-16 py-4 shadow-md transition-all hover:scale-105 hover:shadow-xl">
+        <h1 className="py-3 text-center text-4xl font-semibold tracking-widest text-slate-900">
+          {" "}
+          MEXICO
         </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-      </div>
+        <section className="flex items-center justify-center gap-6">
+          {/* AVATAR */}
+          <Image
+            src={"/homer.webp"}
+            alt="Homer hipster"
+            width={300}
+            height={450}
+            className="h-72 w-52 rounded-md"
+          />
+
+          {/* DESCRIPTION */}
+          <div className="flex flex-col gap-4">
+            <IdText area="name" content={characterInfo.name} />
+            <IdText area="nationality" content={characterInfo.nationality} />
+            <IdText area="date of issue" content={characterInfo.dateOfIssue} />
+            <IdText area="authority" content={characterInfo.Authority} />
+          </div>
+        </section>
+      </article>
     </main>
   );
 }
